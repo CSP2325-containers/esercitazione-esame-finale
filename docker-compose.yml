@@ -1,0 +1,20 @@
+services:
+  api:
+    build:
+      context: .
+      target: builder
+    container_name: fastapi-application
+    environment:
+      PORT: 8000
+      DATABASE_URL: mysql+mysqlconnector://dbusert:dbpassword@dbhost/databasename
+    ports:
+      - '8000:8000'
+    restart: "no"
+    volumes:
+      - ./app:/app
+    networks:
+      - default 
+
+networks:
+  default:
+    name: esercitazione-esame-finale_default
